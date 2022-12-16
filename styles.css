@@ -1,0 +1,118 @@
+:root {
+  --bg-color: hsl(49 37% 94%);
+  --typeSpeed: 4s;
+  --characters: 35;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inconsolata, monospace;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  text-align: center;
+  background: var(--bg-color);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#indexButton {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 1.25rem;
+  background: #5cb85c;
+  width: max-content;
+  color: hsl(0, 0%, 0% / 0.7);
+  font-size: 2.8rem;
+  font-weight: 300;
+  margin-top: 2rem;
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: fade 2s ease calc(var(--typeSpeed) + 1.5s) forwards;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  position: relative;
+  width: max-content;
+}
+
+h1::before,
+h1::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+h1::before {
+  background: var(--bg-color);
+  animation: typewriter var(--typeSpeed) steps(var(--characters)) 1s forwards;
+}
+
+h1::after {
+  width: 0.125em;
+  background: black;
+  animation: typewriter var(--typeSpeed) steps(var(--characters)) 1s forwards,
+    blink 700ms steps(var(--characters)) infinite;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  #indexButton {
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    border-radius: 0.9rem;
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  #indexButton {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+    border-radius: 0.7rem;
+    margin: 0.75rem;
+  }
+}
